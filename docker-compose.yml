@@ -6,11 +6,21 @@ services:
       context: .
       args:
         - DEV=true
+    restart: always
+    image: blood_net_app
+    container_name: blood_net_app
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
-      
-      
+
+    networks:
+      - blood_net_network
+
+
+#   Docker Networks
+networks:
+  blood_net_network:
+    driver: bridge
