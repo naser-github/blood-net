@@ -1,14 +1,13 @@
 version: "3.9"
-#docker-compose run --rm app sh -c "django-admin startproject app ."
+
 services:
   app:
     build:
       context: .
       args:
         - DEV=true
-    restart: always
     image: blood_net_app
-    container_name: blood_net_app
+    container_name: app
     ports:
       - "8000:8000"
     volumes:
@@ -19,8 +18,6 @@ services:
     networks:
       - blood_net_network
 
-
-#   Docker Networks
 networks:
   blood_net_network:
     driver: bridge
