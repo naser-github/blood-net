@@ -5,8 +5,8 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements/base.txt /tmp/requirements/base.txt
 COPY ./requirements/dev.txt /tmp/requirements/dev.txt
-COPY app /app
-WORKDIR /app
+COPY blood_net_app /blood_net_app
+WORKDIR /blood_net_app
 EXPOSE 8000
 
 ARG DEV=false
@@ -14,8 +14,8 @@ ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements/base.txt && \
-    if [ $DEV = "true"]; then \
-      /py/bin/pip install -r /tmp/requirements/dev.txt; \
+    if [ $DEV = "true"]; \
+      then /py/bin/pip install -r /tmp/requirements/dev.txt; \
     fi && \
     rm -rf /tmp/ && \
     adduser \

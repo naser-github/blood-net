@@ -1,17 +1,17 @@
 version: "3.9"
 
 services:
-  app:
+  blood_net_app:
     build:
       context: .
       args:
         - DEV=true
     image: blood_net_app
-    container_name: app
+    container_name: blood_net_app
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app
+      - ./blood_net_app:/blood_net_app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
 
