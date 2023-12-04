@@ -6,6 +6,7 @@ services:
       context: .
       args:
         - DEV=true
+    user: django-user
     image: blood_net_app
     container_name: blood_net_app
     ports:

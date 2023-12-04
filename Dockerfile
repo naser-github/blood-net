@@ -21,7 +21,9 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user
+        django-user && \
+    chown -R django-user:django-user /blood_net_app && \
+    chmod -R 755 /blood_net_app
 
 ENV PATH="/py/bin:$PATH"
 
