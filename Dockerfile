@@ -11,7 +11,8 @@ EXPOSE 8000
 
 ARG DEV=false
 
-RUN python -m venv /py && \
+RUN apk add --no-cache bash && \
+    python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements/base.txt && \
     if [ $DEV = "true"]; \
